@@ -938,7 +938,6 @@ export const SPOTS: Spot[] = [
     lat: 43.0560,
     lng: 141.3208,
   },
-]
 
   // 札幌 補充
   {
