@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import type { RealtimeChannel } from '@supabase/supabase-js'
 
@@ -17,12 +17,11 @@ interface PresenceEntry {
 
 export default function OnlineUsers({ tripId, userName, accentColor }: Props) {
   const [onlineUsers, setOnlineUsers] = useState<string[]>([])
-  const mountId = useRef(Math.random().toString(36).slice(2, 8))
 
   useEffect(() => {
     if (!userName) return
 
-    const channel = supabase.channel(`presence-${tripId}-${mountId.current}`, {
+    const channel = supabase.channel(`presence-${tripId}`, {
       config: { presence: { key: userName } },
     })
 
